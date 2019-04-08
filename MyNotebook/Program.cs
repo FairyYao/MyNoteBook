@@ -15,10 +15,15 @@ namespace MyNotebook
         [STAThread]
         static void Main()
         {
-            //MyForm mForm = new MyForm();
+           
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MyForm());
+
+            MyForm mForm = new MyForm();
+            Application.Run(mForm);
+
+            
         }
     }
 }

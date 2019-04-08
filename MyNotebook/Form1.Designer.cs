@@ -34,10 +34,12 @@ namespace MyNotebook
         {
             this.textEditor = new System.Windows.Forms.Label();
             this.textList = new System.Windows.Forms.Label();
-            this.richTextBox = new System.Windows.Forms.RichTextBox();
+            this.richTextBox = new MyNotebook.mRichBox();
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.noteList = new System.Windows.Forms.ListView();
+            this.addButton = new System.Windows.Forms.Button();
+            this.delButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textEditor
@@ -64,6 +66,7 @@ namespace MyNotebook
             // 
             // richTextBox
             // 
+            this.richTextBox.id = 0;
             this.richTextBox.Location = new System.Drawing.Point(140, 27);
             this.richTextBox.Name = "richTextBox";
             this.richTextBox.Size = new System.Drawing.Size(403, 268);
@@ -79,6 +82,7 @@ namespace MyNotebook
             this.saveButton.TabIndex = 7;
             this.saveButton.Text = "保存";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // cancelButton
             // 
@@ -89,18 +93,40 @@ namespace MyNotebook
             this.cancelButton.TabIndex = 8;
             this.cancelButton.Text = "取消";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // noteList
             // 
             this.noteList.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.noteList.FullRowSelect = true;
             this.noteList.Location = new System.Drawing.Point(5, 27);
             this.noteList.Name = "noteList";
-            this.noteList.Size = new System.Drawing.Size(121, 268);
+            this.noteList.Size = new System.Drawing.Size(129, 268);
             this.noteList.TabIndex = 9;
             this.noteList.TileSize = new System.Drawing.Size(128, 28);
             this.noteList.UseCompatibleStateImageBehavior = false;
-            this.noteList.View = System.Windows.Forms.View.List;
+            this.noteList.View = System.Windows.Forms.View.Details;
             this.noteList.SelectedIndexChanged += new System.EventHandler(this.noteList_SelectedIndexChanged);
+            // 
+            // addButton
+            // 
+            this.addButton.Location = new System.Drawing.Point(9, 300);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(53, 23);
+            this.addButton.TabIndex = 10;
+            this.addButton.Text = "增加";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // delButton
+            // 
+            this.delButton.Location = new System.Drawing.Point(77, 300);
+            this.delButton.Name = "delButton";
+            this.delButton.Size = new System.Drawing.Size(52, 23);
+            this.delButton.TabIndex = 11;
+            this.delButton.Text = "删除";
+            this.delButton.UseVisualStyleBackColor = true;
+            this.delButton.Click += new System.EventHandler(this.delButton_Click);
             // 
             // MyForm
             // 
@@ -108,6 +134,8 @@ namespace MyNotebook
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(555, 330);
+            this.Controls.Add(this.delButton);
+            this.Controls.Add(this.addButton);
             this.Controls.Add(this.noteList);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
@@ -125,10 +153,13 @@ namespace MyNotebook
         #endregion
         private System.Windows.Forms.Label textEditor;
         private System.Windows.Forms.Label textList;
-        private System.Windows.Forms.RichTextBox richTextBox;
+        //private System.Windows.Forms.RichTextBox richTextBox;
+        private mRichBox richTextBox;
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.ListView noteList;
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Button delButton;
     }
 }
 
